@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login de Usuário</title>
+    <link rel="stylesheet" href="cssfinal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .error-message {
+            background-color: #ffebee;
+            color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="title">Bem-vindo de volta!</h2>
+            <p class="subtitle">Acesse sua conta para continuar.</p>
+
+            <div id="error-container"></div>
+
+            <form action="login.php" method="POST">
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="email@exemplo.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                </div>
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+
+            <div class="login-link">
+                <p>Ainda não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+            </div>
+        </div>
+        <div class="illustration-container">
+            <img src="cruzeiro.png" alt="Ilustração de login" class="illustration">
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('erro')) {
+                const errorContainer = document.getElementById('error-container');
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.textContent = 'E-mail ou senha inválidos. Tente novamente.';
+                errorContainer.appendChild(errorDiv);
+            }
+        });
+    </script>
+</body>
+</html>
